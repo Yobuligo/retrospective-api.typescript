@@ -30,7 +30,9 @@ export abstract class Controller<T extends IEntity> {
   private deleteById() {
     this.router.delete(`${this.path}/:id`, (req, res) => {
       this.request(res, async () => {
-        const success = await this.repository.deleteById(req.params.id);
+        const success = await this.repository.deleteById(
+          parseInt(req.params.id)
+        );
         res.status(200).send(success);
       });
     });
@@ -48,7 +50,7 @@ export abstract class Controller<T extends IEntity> {
   private findById() {
     this.router.get(`${this.path}/:id`, (req, res) => {
       this.request(res, async () => {
-        const item = await this.repository.findById(req.params.id);
+        const item = await this.repository.findById(parseInt(req.params.id));
         if (item) {
           res.status(200).send(item);
         } else {
@@ -62,7 +64,10 @@ export abstract class Controller<T extends IEntity> {
     this.router.put(`${this.path}/:id`, (req, res) => {
       this.request(res, async () => {
         const body: IEntityDetails<T> = { ...req.body };
-        const item = await this.repository.updateById(req.params.id, body);
+        const item = await this.repository.updateById(
+          parseInt(req.params.id),
+          body
+        );
         res.status(200).send(item);
       });
     });
