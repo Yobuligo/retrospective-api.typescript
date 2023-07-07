@@ -1,5 +1,6 @@
 import { IEntity } from "../types/IEntity";
 import { IEntityDetails } from "../types/IEntityDetails";
+import { Identifier } from "../types/Identifier";
 
 export interface IRepository<T extends IEntity> {
   add(dataObject: IEntityDetails<T>): Promise<T>;

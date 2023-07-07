@@ -1,1 +1,1 @@
-type Identifier = string;
+export type Identifier = string;
