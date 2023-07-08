@@ -5,9 +5,15 @@ export declare abstract class Repository<T extends IEntity> implements IReposito
     private readonly table;
     constructor(table: string);
     add(dataObject: IEntityDetails<T>): Promise<T>;
-    delete(dataObject: IEntityDetails<T>): Promise<boolean>;
+    delete(dataObject: T): Promise<boolean>;
     deleteById(id: number): Promise<boolean>;
     findAll(): Promise<T[]>;
     findById(id: number): Promise<T | undefined>;
-    updateById(id: number, dataObject: IEntityDetails<T>): Promise<T>;
+    updateById(id: number, dataObject: IEntityDetails<T>): Promise<T | undefined>;
+    private createPromise;
+    private buildUpdatePlaceholders;
+    private buildUpdateValues;
+    private buildColumnNames;
+    private buildColumnPlaceholders;
+    private buildColumnValues;
 }

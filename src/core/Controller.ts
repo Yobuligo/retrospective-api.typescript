@@ -73,9 +73,9 @@ export abstract class Controller<T extends IEntity> {
     });
   }
 
-  private request(res: any, block: () => void) {
+  private async request(res: any, block: () => void) {
     try {
-      block();
+      await block();
     } catch (error) {
       res.status(400).send(error);
     }

@@ -70,12 +70,14 @@ class Controller {
         });
     }
     request(res, block) {
-        try {
-            block();
-        }
-        catch (error) {
-            res.status(400).send(error);
-        }
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield block();
+            }
+            catch (error) {
+                res.status(400).send(error);
+            }
+        });
     }
 }
 exports.Controller = Controller;
