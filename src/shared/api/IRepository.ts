@@ -8,5 +8,8 @@ export interface IRepository<T extends IEntity> {
   deleteById(id: Identifier): Promise<boolean>;
   findAll(): Promise<T[]>;
   findById(id: Identifier): Promise<T | undefined>;
-  updateById(id: Identifier, dataObject: IEntityDetails<T>): Promise<T | undefined>;
+  updateById(
+    id: Identifier,
+    dataObject: IEntityDetails<T>
+  ): Promise<T | undefined>;
 }

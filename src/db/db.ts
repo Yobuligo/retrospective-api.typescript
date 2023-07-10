@@ -1,16 +1,14 @@
 import { configDotenv } from "dotenv";
-import { Pool } from "pg";
+import { Sequelize } from "sequelize";
 import { error } from "../shared/utils/error";
 
 configDotenv();
 
-export const db = new Pool({
+export const db = new Sequelize({
+  dialect: "postgres",
   host: process.env.DB_HOST,
-  port: parseInt(
-    process.env.DB_PORT ??
-      error("Error when getting port for db. Port is not defined in .env.")
-  ),
+  port: parseInt(process.env.DB_PORT ?? error()),
   database: process.env.DB_NAME,
-  user: process.env.DB_USER,
+  username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
 });

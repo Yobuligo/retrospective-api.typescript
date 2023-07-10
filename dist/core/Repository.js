@@ -53,7 +53,7 @@ class Repository {
         }));
     }
     updateById(id, dataObject) {
-        return this.createPromise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+        return this.createPromise((resolve) => __awaiter(this, void 0, void 0, function* () {
             const query = `UPDATE ${this.table} SET ${this.buildUpdatePlaceholders(dataObject)} WHERE id = $1 RETURNING *`;
             const data = yield db_1.db.query(query, [
                 id,
