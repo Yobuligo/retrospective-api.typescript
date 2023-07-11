@@ -2,10 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BoardController = void 0;
 const Controller_1 = require("../../core/Controller");
-const BoardRepository_1 = require("./BoardRepository");
+const SequelizeRepository_1 = require("../../lib/SequelizeRepository");
+const Board_1 = require("./Board");
 class BoardController extends Controller_1.Controller {
     constructor() {
-        super("/boards", new BoardRepository_1.BoardRepository());
+        super("/boards", new SequelizeRepository_1.SequelizeRepository(Board_1.Board));
     }
 }
 exports.BoardController = BoardController;

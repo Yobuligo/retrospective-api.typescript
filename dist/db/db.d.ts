@@ -1,2 +1,2 @@
-import { Pool } from "pg";
-export declare const db: Pool;
+import { Sequelize } from "sequelize";
+export declare const db: Sequelize;
